@@ -8,6 +8,7 @@
 *.lo
 *.o
 *.dylib
+*.exe
 
 *.gcda
 *.gcno
