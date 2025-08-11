@@ -1,0 +1,42 @@
+--- a/Makefile	2025-08-11 16:57:21.111031324 +0900
++++ b/Makefile	2025-08-11 16:26:47.801344157 +0900
+@@ -14,13 +14,13 @@
+ 
+ CC=arm-mingw32ce-gcc
+ 
+-CFLAGS=-O3 -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR
++CFLAGS=-O3 -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR -DNO_ERRNO_H -D_WIN32_WCE
+ #CFLAGS=-O -DMAX_WBITS=14 -DMAX_MEM_LEVEL=7
+ #CFLAGS=-g -DZLIB_DEBUG
+ #CFLAGS=-O3 -Wall -Wwrite-strings -Wpointer-arith -Wconversion \
+ #           -Wstrict-prototypes -Wmissing-prototypes
+ 
+-SFLAGS=-O3 -fPIC -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR
++SFLAGS=-O3 -D_LARGEFILE64_SOURCE=1 -DNO_STRERROR -DNO_ERRNO_H -D_WIN32_WCE
+ LDFLAGS=
+ TEST_LIBS=-L. libz.a
+ LDSHARED=arm-mingw32ce-gcc -shared -Wl,-soname,libz.so.1,--version-script,zlib.map
+@@ -36,7 +36,7 @@
+ ARFLAGS=rc
+ RANLIB=arm-mingw32ce-ranlib
+ LDCONFIG=ldconfig
+-LDSHAREDLIBC=-lc
++LDSHAREDLIBC=
+ TAR=tar
+ SHELL=/bin/sh
+ EXE=
+@@ -69,11 +69,11 @@
+ 
+ PIC_OBJS = $(PIC_OBJC) $(PIC_OBJA)
+ 
+-all: static shared all64
++all: static shared 
+ 
+-static: example$(EXE) minigzip$(EXE)
++static: example$(EXE) 
+ 
+-shared: examplesh$(EXE) minigzipsh$(EXE)
++shared: examplesh$(EXE) 
+ 
+ all64: example64$(EXE) minigzip64$(EXE)
+ 

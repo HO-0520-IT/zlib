@@ -3,11 +3,15 @@
 *.orig
 *.rej
 
+# makefile.patch のみ除外
+!makefile.patch
+
 *~
 *.a
 *.lo
 *.o
 *.dylib
+*.exe
 
 *.gcda
 *.gcno
